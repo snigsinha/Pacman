@@ -1,7 +1,3 @@
-README Pacman
-
-HANDIN Final
-
 Design choices:
 
 I wrote Pacman with the classes App, BoardCoordinate, Constants, Dot, Energizer, Fruit, Game, Ghosts, SmartSquare, Sidebar.
@@ -55,7 +51,7 @@ for the ghost and pacman for when their positions are reset when a life is lost.
 I had to set up a boolean to show whether there were walls or not to check for walls
 when appropriate
 
-Extra Credit
+Extra Features
 -Smooth movement : Pacman moves smoothly, so if a user presses a key while pacman can't move in that direction,
 as soon as it can, pacman moves in that direction without further prompting or keyinput
 
@@ -65,12 +61,3 @@ all the fruit did was add extra points
 
 -Pacman snazzy graphics: Instead of an ellipse, pacman is graphically represented as it is in the 8bit game
 and its mouth is always facing the objects it eats
-
-Known Bugs:
-When pacman and the ghost approach each other from opposite directions, they do not collide correctly
-despite me calling the methods in the timeline as suggested by the handout and helpslides in the order
-
-movepacman
-checkcollisions
-moveghosts
-checkcollisions
