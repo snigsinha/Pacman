@@ -1,0 +1,76 @@
+README Pacman
+
+HANDIN Final
+
+Design choices:
+
+I wrote Pacman with the classes App, BoardCoordinate, Constants, Dot, Energizer, Fruit, Game, Ghosts, SmartSquare, Sidebar.
+I also made a Collidable interface to deal with Collidable objects and use Polymorphism  when dealing with collision
+functionality of the game. I also made Direction and GhostMode enums. 
+
+App class has the methods main and start.
+
+BoardCoordinate class has the methods checkValidity, getRow and getColumn
+
+Constants class has defined constants
+
+Dot class has the methods collide, getLocX, getLocY, setLocX, setLocY, getNode and getScore
+
+Energizer class has the methods collide, getLocX, getLocY, setLocX, setLocY, getNode and getScore
+
+Fruit class has the methods collide, getLocX, getLocY, setLocX, setLocY, getNode and getScore
+
+Game class has the methods changeGhostColorFrightened, checkCollision, checkGameEnds, controlModes, createBoard, getBoardArray,
+getCurrentGhostMode, getGhostQueue, intitialGhostPen, moveGhostsAndChangeColor, movePacman, moveSmoothly, moveValidity,
+reset, setCurrentGhostMode, setUpGhostPenTimeline, setUpTimeline, updateDotCounter and wrapPacmanMovement. 
+Game class also has the private inner classes GhostPenHandler, KeyHandler and MoveHandler
+
+Ghosts class has the methods bfs, checkvalidNeighbours, collide, getFrightenedGhostDirection getLocX, getLocY, setLocX, setLocY, 
+getNode, getScore, moveGhost and setColor
+
+Pacman class has the methods  getLocX, getLocY, setLocX, setLocY, getNode
+
+PaneOrganiser class has the method getRoot
+
+SideBar class has the methods getLives, setUpLabels, setUpQuitButton, showGameOver, showGameWon, updateLives and updateScore
+
+SmartSquare class has the methods  getLocX, getLocY, setLocX, setLocY, getArrayList
+
+Design choices to explain:
+
+-Since there were multiple instances of ghosts, I decided to factor out as many methods
+as I could in the ghost class for whatever the different ghosts had in common then 
+have methods in the game class that dealt with the ghosts all at once for things
+that they did differently, like have different targets in different modes.
+
+-To get ghosts to move randomly in frightened mode, I decided to keep track of
+valid directions a ghost could take in every intersection in an arraylist for
+its ability to deal with varying sizes. Then I randomly generate an integer
+that represents an element in this arraylist of directions and set the direction
+of the ghost to that randomly generated direction. See getFrightened ghost direction
+ in the ghost class
+
+-Since the BoardLocation array could only be used once, I ended up hardcoding some start locations
+for the ghost and pacman for when their positions are reset when a life is lost. Furthermore
+I had to set up a boolean to show whether there were walls or not to check for walls
+when appropriate
+
+Extra Credit
+-Smooth movement : Pacman moves smoothly, so if a user presses a key while pacman can't move in that direction,
+as soon as it can, pacman moves in that direction without further prompting or keyinput
+
+-Fruit : I made fruit in the game for extra points. I did as much research as I could but I had to make some 
+assumptions about the functionality in the game. I assumed that the game could end with fruit uneaten and
+all the fruit did was add extra points
+
+-Pacman snazzy graphics: Instead of an ellipse, pacman is graphically represented as it is in the 8bit game
+and its mouth is always facing the objects it eats
+
+Known Bugs:
+When pacman and the ghost approach each other from opposite directions, they do not collide correctly
+despite me calling the methods in the timeline as suggested by the handout and helpslides in the order
+
+movepacman
+checkcollisions
+moveghosts
+checkcollisions
